@@ -33,16 +33,14 @@ export default function VideoReels() {
 	];
 
 	return (
-		<section className="reels-section">
+		<section className="VideoReels" id="videoReels" aria-label="Section Video Reels">
 			<div className="reels-container">
-				{/* رأس القسم */}
 				<div className="reels-header">
 					<span className="reels-badge">مكتبة النصائح الطبية 🎥</span>
 					<h2 className="reels-title">إجابات مرئية ومبسطة لكل ما يهم عائلتك</h2>
 					<p className="reels-subtitle">شاهدي أحدث الفيديوهات القصيرة والنصائح الطبية المباشرة من د. صبرين بدر الديب لتكوني على دراية كاملة بمختلف مراحل رحلتك.</p>
 				</div>
 
-				{/* شبكة الفيديوهات (استخدام Tailwind حصرياً للـ Grid) */}
 				<div className="reels-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 					{reels.map((reel, index) => (
 						<div key={index} className="reel-card">

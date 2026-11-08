@@ -1,6 +1,8 @@
+// @/app/components/FAQ/FAQ.tsx
 "use client";
 
 import { useState } from "react";
+import { HelpCircle, Sparkles, ChevronDown, ChevronUp, Stethoscope } from "lucide-react";
 import "./FAQ.css";
 
 export default function FAQ() {
@@ -34,22 +36,24 @@ export default function FAQ() {
 	};
 
 	return (
-		<section className="faq-section" id="faq">
+		<section className="faq-section" id="faq" aria-label="Section FAQ">
 			<div className="faq-container">
-				{/* رأس القسم */}
 				<div className="faq-header">
-					<span className="faq-badge">الأسئلة الشائعة والاستفسارات 💡</span>
+					<span className="faq-badge">
+						<HelpCircle className="w-3.5 h-3.5 ml-1.5 text-rose-600" />
+						الأسئلة الشائعة والاستفسارات
+					</span>
 					<h2 className="faq-title">إجابات واضحة لكل ما يهم صحتك وصحة جنينك</h2>
 					<p className="faq-subtitle">الوضوح والمعرفة هما أساس الأمان الطبي؛ جمعنا لكِ أبرز الأسئلة المتكررة لنجيب عليها بكل شفافية واهتمام.</p>
 				</div>
 
-				{/* شبكة الأسئلة (استخدام Tailwind حصرياً للـ Grid) */}
+				{/* شبكة الأسئلة */}
 				<div className="faq-grid grid grid-cols-1 md:grid-cols-2">
 					{faqs.map((faq, index) => (
 						<div key={index} className={`faq-card ${activeIndex === index ? "active" : ""}`} onClick={() => toggleFAQ(index)}>
 							<div className="faq-question-row">
 								<h3 className="faq-question">{faq.question}</h3>
-								<span className="faq-icon">{activeIndex === index ? "−" : "+"}</span>
+								<span className="faq-icon">{activeIndex === index ? <ChevronUp className="w-4 h-4 text-rose-600" /> : <ChevronDown className="w-4 h-4 text-rose-600" />}</span>
 							</div>
 							{activeIndex === index && (
 								<div className="faq-answer-box">
@@ -62,9 +66,13 @@ export default function FAQ() {
 
 				{/* بطاقة الدعم الإضافي */}
 				<div className="faq-cta-box">
-					<p>لديكِ استفسار خاص لم تجديه هنا؟</p>
-					<a href="/booking" className="faq-cta-button">
-						احجزي استشارتك المباشرة مع د. صبرين الآن 🩺
+					<p className="flex items-center gap-2">
+						<Sparkles className="w-4 h-4 text-rose-600" />
+						لديكِ استفسار خاص لم تجديه هنا؟
+					</p>
+					<a href="/booking" className="faq-cta-button flex items-center justify-center gap-2" aria-label="احجزي استشارتك المباشرة مع د. صبرين الآن">
+						<Stethoscope className="w-4 h-4" />
+						<span>احجزي استشارتك المباشرة مع د. صبرين الآن</span>
 					</a>
 				</div>
 			</div>

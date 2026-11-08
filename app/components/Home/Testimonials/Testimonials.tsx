@@ -26,7 +26,7 @@ export default function Testimonials() {
 	];
 
 	return (
-		<section className="testimonials-section">
+		<section className="testimonials-section" id="testimonials" aria-label="Section Testimonials">
 			<div className="testimonials-container">
 				{/* رأس القسم */}
 				<div className="testimonials-header">

@@ -1,8 +1,9 @@
+/* @/app/components/Footer/Footer.css */
 .footer-section {
-	background-color: var(--card-bg);
-	border-top: 1px solid var(--border-color);
 	padding: 4rem 1rem 2rem 1rem;
+	background-color: var(--card-bg);
 	transition: background-color 0.3s ease;
+	border-top: 1px solid var(--border-color);
 
 	@media (min-width: 768px) {
 		padding: 5rem 2rem 2rem 2rem;
@@ -39,25 +40,63 @@
 
 		& .footer-socials {
 			display: flex;
-			gap: 0.5rem;
+			gap: 0.6rem;
 			flex-wrap: wrap;
 			margin-top: 0.5rem;
 
-			& a {
-				font-size: 0.75rem;
+			& .social-btn {
+				font-size: 0.85rem;
 				font-weight: 600;
-				padding: 0.4rem 0.75rem;
-				border-radius: 0.5rem;
+				padding: 0.5rem 0.85rem;
+				border-radius: 0.875rem;
 				background-color: var(--background);
 				color: var(--foreground);
 				border: 1px solid var(--border-color);
 				text-decoration: none;
-				transition: all 0.2s ease;
+				/* أنيميشن ناعم ومتطور */
+				transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 
+				& .social-icon-wrapper {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					transition: transform 0.3s ease;
+				}
+
+				/* أنيميشن الحركة والارتفاع عند مرور الماوس */
 				&:hover {
-					background-color: var(--pregnancy-pink);
+					transform: translateY(-4px) scale(1.02);
 					color: #ffffff;
-					border-color: var(--pregnancy-pink);
+
+					& .social-icon-wrapper {
+						transform: scale(1.2) rotate(6deg);
+					}
+				}
+
+				/* ألوان وأنيميشن الظل لكل منصة على حدة */
+				&.facebook:hover {
+					background-color: #1877F2;
+					border-color: #1877F2;
+					box-shadow: 0 8px 20px -4px rgba(24, 119, 242, 0.4);
+				}
+
+				&.instagram:hover {
+					background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+					border-color: transparent;
+					box-shadow: 0 8px 20px -4px rgba(228, 64, 95, 0.4);
+				}
+
+				&.tiktok:hover {
+					background-color: #0f172a;
+					border-color: #0f172a;
+					box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.4);
+				}
+
+				&.whatsapp:hover {
+					background-color: #25D366;
+					border-color: #25D366;
+					box-shadow: 0 8px 20px -4px rgba(37, 211, 102, 0.4);
 				}
 			}
 		}
@@ -119,20 +158,24 @@
 			line-height: 1.5;
 		}
 
-		& .footer-map-placeholder {
+		& .footer-map-link {
 			background-color: var(--background);
 			border: 1px dashed var(--border-color);
 			border-radius: 1rem;
-			padding: 1rem;
+			padding: 0.75rem 1rem;
 			text-align: center;
 			font-size: 0.85rem;
 			font-weight: 600;
-			color: var(--pregnancy-blue);
+			color: var(--foreground);
 			margin-top: 0.5rem;
-			transition: border-color 0.3s ease;
+			text-decoration: none;
+			transition: all 0.3s ease;
 
 			&:hover {
 				border-color: var(--pregnancy-blue);
+				background-color: var(--pregnancy-blue-light);
+				color: var(--pregnancy-blue);
+				transform: translateY(-2px);
 			}
 		}
 	}

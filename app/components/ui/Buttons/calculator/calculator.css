@@ -1,14 +1,7 @@
-/* @/app/calculator/page.css */
+/* @/app/calculator/calculator.css */
 .calculator-wrapper {
-	background-color: var(--background);
-	padding: 3rem 1rem;
-	min-height: calc(100vh - 70px);
-	transition: background-color 0.3s ease;
-
-	@media (min-width: 768px) {
-		padding: 5rem 2rem;
-	}
-
+	min-height: 100vh;
+	padding: 2rem 0 0 0 !important;
 
 	& .calculator-container {
 		max-width: 900px;

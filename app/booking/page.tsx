@@ -1,9 +1,9 @@
-import ContactBooking from "@/app/components/Home/Contact/ContactBooking";
+import Booking from "@/app/components/ui/Buttons/Booking/Booking";
 
 export default function BookingPage() {
 	return (
 		<main>
-			<ContactBooking />
+			<Booking />
 		</main>
 	);
 }

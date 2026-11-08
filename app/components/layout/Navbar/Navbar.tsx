@@ -2,8 +2,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "./Navbar.css";
+import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
+import "./Navbar.css";
 
 export default function Navbar() {
 	const [theme, setTheme] = useState("light");
@@ -21,27 +22,53 @@ export default function Navbar() {
 		localStorage.setItem("theme", nextTheme);
 	};
 
-	// دالة التمرير الانسيابي عند الضغط على الروابط الداخلية
 	const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-		if (href.startsWith("/#")) {
-			const targetId = href.replace("/#", "");
+		// 1. لو رابط رئيسي (مثل /#hero) ونحن لسنا في الصفحة الرئيسية أساساً
+		if (href.startsWith("/#") && window.location.pathname !== "/") {
+			// دع المتصفح ينتقل للرئيسية طبيعياً
+			setIsMobileMenuOpen(false);
+			return;
+		}
+
+		if (href.includes("#")) {
+			const targetId = href.split("#")[1];
 			const element = document.getElementById(targetId);
+
 			if (element) {
 				e.preventDefault();
-				element.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-				});
+				const navHeight = 80;
+				const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+				const offsetPosition = elementPosition - navHeight;
+
+				const startPosition = window.scrollY;
+				const distance = offsetPosition - startPosition;
+				const duration = 700;
+				let startTime: number | null = null;
+
+				const animation = (currentTime: number) => {
+					if (startTime === null) startTime = currentTime;
+					const timeElapsed = currentTime - startTime;
+					const progress = Math.min(timeElapsed / duration, 1);
+					const ease = progress < 0.5 ? 4 * progress * progress * progress : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+
+					window.scrollTo(0, startPosition + distance * ease);
+
+					if (timeElapsed < duration) {
+						requestAnimationFrame(animation);
+					}
+				};
+
+				requestAnimationFrame(animation);
 				window.history.pushState(null, "", href);
 			}
 		}
-		setIsMobileMenuOpen(false); // إغلاق قائمة الموبايل عند الضغط على أي رابط
+		setIsMobileMenuOpen(false);
 	};
 
 	const navItems = [
 		{ name: "الرئيسية", href: "/#hero" },
-		{ name: "الخدمات الطبية", href: "/#services" },
-		{ name: "الأسئلة الشائعة", href: "/#faq" },
+		{ name: "الخدمات", href: "/#services" },
+		{ name: "آراء المرضى", href: "/#testimonials" },
 	];
 
 	return (
@@ -51,7 +78,6 @@ export default function Navbar() {
 					عيادة <span>د. صبرين بدر الديب</span>
 				</p>
 
-				{/* روابط التنقل للشاشات الكبيرة */}
 				<nav className="nav-links">
 					{navItems.map((item, index) => (
 						<a key={index} href={item.href} onClick={(e) => handleScroll(e, item.href)} aria-label={item.name}>
@@ -60,20 +86,17 @@ export default function Navbar() {
 					))}
 				</nav>
 
-				{/* إجراءات الناف بار */}
 				<div className="nav-actions">
-					<button onClick={toggleTheme} className="theme-toggle-btn" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي">
-						{theme === "light" ? "🌙" : "☀️"}
+					<button onClick={toggleTheme} aria-label="تبديل الوضع الليلي" title="تبديل الوضع الليلي" className="theme-toggle-btn">
+						{theme === "light" ? <Sun className="w-5 h-5 text-amber-500" /> : <Moon className="w-5 h-5 text-indigo-600" />}
 					</button>
 
-					{/* زر القائمة للشاشات الصغيرة (الموبايل) */}
 					<button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="فتح القائمة الرئيسية">
 						{isMobileMenuOpen ? "✕" : "☰"}
 					</button>
 				</div>
 			</div>
 
-			{/* القائمة المنسدلة للموبايل */}
 			{isMobileMenuOpen && (
 				<div className="mobile-dropdown-menu">
 					{navItems.map((item, index) => (

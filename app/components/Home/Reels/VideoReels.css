@@ -1,12 +1,4 @@
-.reels-section {
-	background-color: var(--background);
-	padding: 4rem 1rem;
-	transition: background-color 0.3s ease;
-
-	@media (min-width: 768px) {
-		padding: 5rem 2rem;
-	}
-
+.VideoReels {
 	& .reels-container {
 		max-width: 1280px;
 		margin: 0 auto;
@@ -108,7 +100,8 @@
 
 				& .play-icon {
 					font-size: 1.25rem;
-					margin-right: -2px; /* لتوسيط رمز التشغيل البصري */
+					margin-right: -2px;
+					/* لتوسيط رمز التشغيل البصري */
 				}
 			}
 

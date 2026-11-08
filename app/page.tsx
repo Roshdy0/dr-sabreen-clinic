@@ -1,3 +1,4 @@
+// @/app/page.tsx
 import Hero from "@/app/components/Home/Hero/Hero";
 import TrustBadges from "@/app/components/Home/TrustBadges/TrustBadges";
 import Services from "@/app/components/Home/Services/Services";

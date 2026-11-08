@@ -1,11 +1,8 @@
+/* @/app/components/FAQ/FAQ.css */
 .faq-section {
-	background-color: var(--background);
 	padding: 4rem 1rem;
+	background-color: var(--background);
 	transition: background-color 0.3s ease;
-
-	@media (min-width: 768px) {
-		padding: 5rem 2rem;
-	}
 
 	& .faq-container {
 		max-width: 1200px;
@@ -77,11 +74,12 @@
 
 		&:hover {
 			border-color: var(--pregnancy-pink);
+			transform: translateY(-2px);
 		}
 
 		&.active {
 			border-color: var(--pregnancy-pink);
-			box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.1);
+			box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.12);
 		}
 
 		& .faq-question-row {
@@ -98,16 +96,13 @@
 			}
 
 			& .faq-icon {
-				width: 2rem;
-				height: 2rem;
+				width: 2.25rem;
+				height: 2.25rem;
 				border-radius: 50%;
 				background-color: var(--pregnancy-pink-light);
-				color: var(--pregnancy-pink);
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				font-weight: 700;
-				font-size: 1.25rem;
 				flex-shrink: 0;
 				transition: transform 0.3s ease;
 			}

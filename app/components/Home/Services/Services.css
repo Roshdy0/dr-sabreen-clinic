@@ -1,16 +1,8 @@
 .services-section {
-	background-color: var(--background);
-	padding: 4rem 1rem;
-	transition: background-color 0.3s ease;
-
-	@media (min-width: 768px) {
-		padding: 5rem 2rem;
-	}
-
 	& .services-container {
-		max-width: 1280px;
-		margin: 0 auto;
 		width: 100%;
+		margin: 0 auto;
+		max-width: 1280px;
 	}
 
 	& .services-header {

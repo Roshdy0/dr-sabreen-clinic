@@ -4,10 +4,9 @@ import "./Hero.css";
 
 export default function Hero() {
 	return (
-		<div className="hero-section-wrapper" id="hero">
+		<section className="hero-section-wrapper" id="hero" aria-label="Section Hero">
 			<section className="hero-container">
 				<div className="hero-grid grid grid-cols-1 lg:grid-cols-12">
-					{/* النص والترحيب (الجانب الأيمن) */}
 					<div className="hero-content lg:col-span-7">
 						<span className="hero-badge">
 							<span className="badge-dot"></span>
@@ -50,6 +49,6 @@ export default function Hero() {
 					</div>
 				</div>
 			</section>
-		</div>
+		</section>
 	);
 }
