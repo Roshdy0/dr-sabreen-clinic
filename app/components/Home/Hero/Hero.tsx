@@ -36,7 +36,7 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="hero-image-side lg:col-span-5">
+					<div className="hero-image-side lg:col-span-5 hidden md:block">
 						<div className="hero-image-box">
 							<Image
 								src="/images/Profile.webp"
@@ -45,8 +45,6 @@ export default function Hero() {
 								priority={true}
 								className="doctor-profile-img"
 								sizes="(max-width: 768px) 100vw, 500px"
-								width={400}
-								height={500}
 								fetchPriority="high"
 							/>
 							<div className="image-overlay">

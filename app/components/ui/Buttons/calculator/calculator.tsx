@@ -11,7 +11,6 @@ export default function PregnancyCalculator() {
 	const [lmpDate, setLmpDate] = useState<string>("");
 	const [result, setResult] = useState<any>(null);
 
-	// دالة حساب الحمل وموعد الولادة
 	const handleCalculatePregnancy = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!lmpDate) return;
@@ -87,130 +86,128 @@ export default function PregnancyCalculator() {
 						أدوات طبية تفاعلية
 					</span>
 					<h1 className="calc-title">حاسبة الحمل و التبويض الدقيقة</h1>
-					<p className="calc-desc">أدوات مصممة بعناية لمساعدتك في تتبع تفاصيل رحلة أمومتك ومعرفة مواعيدك الطبية بكل سهولة.</p>
+					<p className="calc-desc">أدوات مصممة بعناية لمساعدتك في تتبع تفاصيل رحلة أمومتك ومعرفة مواعيدك الطبية بكل سهولة ويسر.</p>
 				</div>
 
-				<div className="calculator-card">
-					<div className="calc-tabs">
-						<button
-							className={`calc-tab-btn flex items-center justify-center gap-2 ${activeTab === "pregnancy" ? "active-pink" : ""}`}
-							onClick={() => {
-								setActiveTab("pregnancy");
-								setResult(null);
-							}}
-							aria-label="حاسبة موعد الولادة"
-						>
-							<Baby className="w-4 h-4" />
-							حاسبة موعد الولادة
-						</button>
-						<button
-							className={`calc-tab-btn flex items-center justify-center gap-2 ${activeTab === "ovulation" ? "active-blue" : ""}`}
-							onClick={() => {
-								setActiveTab("ovulation");
-								setResult(null);
-							}}
-							aria-label="حاسبة أيام التبويض والخصوبة"
-						>
-							<Sparkles className="w-4 h-4" />
-							حاسبة أيام التبويض والخصوبة
-						</button>
-					</div>
-
-					<form onSubmit={activeTab === "pregnancy" ? handleCalculatePregnancy : handleCalculateOvulation} className="calc-form">
-						<div className="form-group">
-							<label
-								htmlFor="lmp"
-								className="form-label flex items-center gap-2"
-								aria-label={activeTab === "pregnancy" ? "تاريخ أول يوم من آخر دورة شهرية (LMP)" : "تاريخ بداية آخر دورة شهرية"}
+				<div className="calculator-bento-grid">
+					{/* كارت المدخلات والتحكم */}
+					<div className="calc-card">
+						<div className="calc-tabs">
+							<button
+								type="button"
+								className={`calc-tab-btn flex items-center justify-center gap-2 ${activeTab === "pregnancy" ? "active-pink" : ""}`}
+								onClick={() => {
+									setActiveTab("pregnancy");
+									setResult(null);
+								}}
+								aria-label="حاسبة موعد الولادة"
 							>
-								<Calendar className="w-4 h-4 text-rose-600" />
-								{activeTab === "pregnancy" ? "تاريخ أول يوم من آخر دورة شهرية (LMP):" : "تاريخ بداية آخر دورة شهرية:"}
-							</label>
-							<input
-								type="date"
-								id="lmp"
-								value={lmpDate}
-								onChange={(e) => setLmpDate(e.target.value)}
-								required
-								className="form-input"
-								aria-label={activeTab === "pregnancy" ? "أدخل تاريخ أول يوم من آخر دورة شهرية" : "أدخل تاريخ بداية آخر دورة شهرية"}
-							/>
+								<Baby className="w-4 h-4" />
+								حاسبة موعد الولادة
+							</button>
+							<button
+								type="button"
+								className={`calc-tab-btn flex items-center justify-center gap-2 ${activeTab === "ovulation" ? "active-blue" : ""}`}
+								onClick={() => {
+									setActiveTab("ovulation");
+									setResult(null);
+								}}
+								aria-label="حاسبة أيام التبويض"
+							>
+								<Sparkles className="w-4 h-4" />
+								حاسبة التبويض
+							</button>
 						</div>
 
-						<button
-							type="submit"
-							className={`calc-submit-btn flex items-center justify-center gap-2 ${activeTab === "pregnancy" ? "bg-pink" : "bg-blue"}`}
-							aria-label={activeTab === "pregnancy" ? "احسبي موعد الولادة والأسابيع الآن" : "احسبي أيام التبويض بدقة"}
-						>
-							{activeTab === "pregnancy" ? (
-								<>
-									<HeartPulse className="w-5 h-5" />
-									احسبي موعد الولادة والأسابيع الآن
-								</>
-							) : (
-								<>
-									<Activity className="w-5 h-5" />
-									احسبي أيام التبويض بدقة
-								</>
-							)}
-						</button>
-					</form>
+						<form onSubmit={activeTab === "pregnancy" ? handleCalculatePregnancy : handleCalculateOvulation} className="calc-form">
+							<div className="form-group">
+								<label htmlFor="lmp" className="form-label flex items-center gap-2">
+									<Calendar className="w-4 h-4 text-rose-600" />
+									{activeTab === "pregnancy" ? "تاريخ أول يوم من آخر دورة شهرية (LMP):" : "تاريخ بداية آخر دورة شهرية:"}
+								</label>
+								<input type="date" id="lmp" value={lmpDate} onChange={(e) => setLmpDate(e.target.value)} required className="form-input" aria-label="أدخل التاريخ" />
+							</div>
 
-					{result && (
-						<div className="calc-results-box">
-							<h3 className="results-title flex items-center gap-2">
-								<Sparkles className="w-5 h-5 text-rose-600" />
-								نتائج التتبع الطبي
-							</h3>
+							<button type="submit" className={`calc-submit-btn flex items-center justify-center gap-2 ${activeTab === "pregnancy" ? "bg-pink" : "bg-blue"}`} aria-label="تنفيذ الحساب">
+								{activeTab === "pregnancy" ? (
+									<>
+										<HeartPulse className="w-5 h-5" />
+										احسبي موعد الولادة والأسابيع الآن
+									</>
+								) : (
+									<>
+										<Activity className="w-5 h-5" />
+										احسبي أيام التبويض بدقة
+									</>
+								)}
+							</button>
+						</form>
+					</div>
 
-							{result.type === "pregnancy" ? (
-								<div className="results-grid grid grid-cols-1 md:grid-cols-2">
-									<div className="result-item">
-										<span className="result-label">موعد الولادة المتوقع:</span>
-										<span className="result-value text-pink">{result.dueDate}</span>
-									</div>
-									<div className="result-item">
-										<span className="result-label">عمر الحمل الحالي:</span>
-										<span className="result-value">{result.currentWeek}</span>
-									</div>
-									<div className="result-item">
-										<span className="result-label">المرحلة الحالية:</span>
-										<span className="result-value">{result.trimester}</span>
-									</div>
-									<div className="result-item">
-										<span className="result-label">تشبيه حجم الجنين:</span>
-										<span className="result-value text-blue">{result.babySize}</span>
-									</div>
+					{/* كارت النتائج (Bento Display) */}
+					{result ? (
+						<div className="calc-results-card">
+							<div>
+								<h3 className="results-header-title">
+									<Sparkles className="w-5 h-5 text-rose-600" />
+									نتائج التتبع الطبي الفوري
+								</h3>
 
-									<div className="result-full-width">
-										<div className="progress-info">
-											<span>مؤشر تقدم رحلة الحمل</span>
-											<span>{result.progress}٪</span>
+								{result.type === "pregnancy" ? (
+									<div className="results-grid-bento mt-4">
+										<div className="result-item">
+											<span className="result-label">موعد الولادة المتوقع:</span>
+											<span className="result-value text-pink">{result.dueDate}</span>
 										</div>
-										<div className="progress-bar-bg">
-											<div className="progress-bar-fill" style={{ width: `${result.progress}%` }}></div>
+										<div className="result-item">
+											<span className="result-label">عمر الحمل الحالي:</span>
+											<span className="result-value">{result.currentWeek}</span>
+										</div>
+										<div className="result-item">
+											<span className="result-label">المرحلة الحالية:</span>
+											<span className="result-value">{result.trimester}</span>
+										</div>
+										<div className="result-item">
+											<span className="result-label">تشبيه حجم الجنين:</span>
+											<span className="result-value text-blue">{result.babySize}</span>
+										</div>
+
+										<div className="result-full-width">
+											<div className="progress-info">
+												<span>مؤشر تقدم رحلة الحمل</span>
+												<span>{result.progress}٪</span>
+											</div>
+											<div className="progress-bar-bg">
+												<div className="progress-bar-fill" style={{ width: `${result.progress}%` }}></div>
+											</div>
 										</div>
 									</div>
-								</div>
-							) : (
-								<div className="results-grid grid grid-cols-1 md:grid-cols-2">
-									<div className="result-item">
-										<span className="result-label">يوم التبويض المتوقع:</span>
-										<span className="result-value text-blue">{result.ovulationDate}</span>
+								) : (
+									<div className="results-grid-bento mt-4">
+										<div className="result-item">
+											<span className="result-label">يوم التبويض المتوقع:</span>
+											<span className="result-value text-blue">{result.ovulationDate}</span>
+										</div>
+										<div className="result-item">
+											<span className="result-label">نافذة الخصوبة العالية:</span>
+											<span className="result-value text-pink">{result.fertileWindow}</span>
+										</div>
 									</div>
-									<div className="result-item">
-										<span className="result-label">نافذة الخصوبة العالية:</span>
-										<span className="result-value text-pink">{result.fertileWindow}</span>
-									</div>
-								</div>
-							)}
+								)}
+							</div>
 
 							<div className="results-cta">
-								<Link href="/booking" className="cta-button flex items-center justify-center gap-2" aria-label="حجز استشارة مع د. صبرين">
+								<Link href="/booking" className="cta-button flex items-center justify-center gap-2" aria-label="حجز استشارة">
 									<span>احجزي استشارتك مع د. صبرين لمتابعة النتائج</span>
 									<ArrowLeft className="w-4 h-4" />
 								</Link>
 							</div>
+						</div>
+					) : (
+						<div className="empty-results-card">
+							<Baby className="empty-icon" />
+							<h4>في انتظار إدخال البيانات</h4>
+							<p>قومي بإدخال تاريخ آخر دورة شهرية بالأعلى واضغطي على زر الحساب لعرض تفاصيل رحلة الحمل والتبويض هنا مباشرة.</p>
 						</div>
 					)}
 				</div>
