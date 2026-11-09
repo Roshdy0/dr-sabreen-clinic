@@ -47,7 +47,6 @@ export default function FAQ() {
 					<p className="faq-subtitle">الوضوح والمعرفة هما أساس الأمان الطبي؛ جمعنا لكِ أبرز الأسئلة المتكررة لنجيب عليها بكل شفافية واهتمام.</p>
 				</div>
 
-				{/* شبكة الأسئلة */}
 				<div className="faq-grid grid grid-cols-1 md:grid-cols-2">
 					{faqs.map((faq, index) => (
 						<div key={index} className={`faq-card ${activeIndex === index ? "active" : ""}`} onClick={() => toggleFAQ(index)}>

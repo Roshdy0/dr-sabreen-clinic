@@ -68,7 +68,6 @@ export default function Footer() {
 		<footer className="footer-section">
 			<div className="footer-container">
 				<div className="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-					{/* العمود الأول: التعريف بالطبيبة */}
 					<div className="footer-col">
 						<h3 className="footer-brand">د. صبرين بدر الديب</h3>
 						<p className="footer-brand-desc">استشاري طب وتأخر الحمل والحقن المجهري. نعتني بصحتك وصحة جنينك بأحدث التقنيات وأعلى معايير الرعاية الطبية والإنسانية.</p>
@@ -83,7 +82,6 @@ export default function Footer() {
 						</div>
 					</div>
 
-					{/* العمود الثاني: روابط سريعة */}
 					<div className="footer-col">
 						<h4 className="footer-heading">روابط سريعة</h4>
 						<ul className="footer-links">
@@ -97,7 +95,6 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					{/* العمود الثالث: أوقات العمل */}
 					<div className="footer-col">
 						<h4 className="footer-heading">أوقات العمل</h4>
 						<ul className="footer-hours">
@@ -113,7 +110,6 @@ export default function Footer() {
 						</ul>
 					</div>
 
-					{/* العمود الرابع: العنوان والتواصل */}
 					<div className="footer-col">
 						<h4 className="footer-heading">العنوان والتواصل</h4>
 						<p className="footer-contact-text flex items-start gap-2">
@@ -128,14 +124,19 @@ export default function Footer() {
 							<MessageSquare className="w-4 h-4 text-emerald-600 shrink-0" />
 							واتساب مباشر: +201117651690
 						</p>
-						<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="footer-map-link flex items-center justify-center gap-2">
+						<a
+							href="https://maps.google.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="footer-map-link flex items-center justify-center gap-2"
+							aria-label="خريطة العيادة التفاعلية"
+						>
 							<Compass className="w-4 h-4 text-sky-600" />
 							<span>خريطة العيادة التفاعلية</span>
 						</a>
 					</div>
 				</div>
 
-				{/* الشريط السفلي للحقوق */}
 				<div className="footer-bottom">
 					<p>© {new Date().getFullYear()} د. صبرين بدر الديب. جميع الحقوق محفوظة.</p>
 					<p className="developer-tag flex items-center justify-center gap-1">

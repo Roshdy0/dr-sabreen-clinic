@@ -1,163 +1,183 @@
-// @/app/components/Booking/Booking.tsx
+// @/app/booking/page.tsx (أو حسب مسار صفحة الحجز لديك)
 "use client";
 
 import { useState } from "react";
-import { Calendar, Phone, MapPin, Clock, MessageSquare, CheckCircle2, User, Stethoscope, ClipboardList } from "lucide-react";
-import "./Booking.css";
+import { Calendar, MapPin, Phone, Clock, MessageSquare, User, Stethoscope, FileText, CheckCircle2 } from "lucide-react";
+import "./booking.css";
 
-export default function Booking() {
-	const [submitted, setSubmitted] = useState(false);
+export default function BookingPage() {
+	const [activeTab, setActiveTab] = useState<"booking" | "info">("booking");
+
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
 		service: "متابعة حمل",
-		date: "",
+		notes: "",
 	});
+
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		setSubmitted(true);
-
-		const phoneNumber = "201117651690";
-		const message = `مرحباً د. صبرين، أود حجز موعد جديد:
-- *الاسم:* ${formData.name}
-- *رقم الهاتف:* ${formData.phone}
-- *نوع الخدمة:* ${formData.service}
-- *الموعد المفضل:* ${formData.date}`;
-
-		const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-		window.open(whatsappUrl, "_blank");
+		setIsSubmitted(true);
 	};
 
 	return (
-		<section className="contact-section" id="booking">
-			<div className="contact-container">
-				{/* رأس القسم */}
-				<div className="contact-header">
-					<span className="contact-badge">
-						<Stethoscope className="w-4 h-4 ml-1.5 text-sky-600" />
+		<section className="booking-section" id="booking">
+			<div className="booking-container">
+				<div className="booking-header">
+					<span className="booking-badge">
+						<Stethoscope className="w-3.5 h-3.5 ml-1.5 text-rose-600" />
 						احجزي موعدك الآن
 					</span>
-					<h2 className="contact-title">تواصل معنا واحجزي استشارتك بكل سهولة</h2>
-					<p className="contact-subtitle">نحن هنا لخدمتك والرد على كافة استفساراتك الطبية. يسعدنا استقبالك في العيادة بمواعيد محددة لضمان راحتك ورعايتك.</p>
+					<h2 className="booking-title">تواصل معنا واجهزي استشارتك بكل سهولة</h2>
+					<p className="booking-subtitle">نحن هنا لخدمتك والرد على كافة استفساراتك الطبية. يسعدنا استقبالك في العيادة بمواعيد محددة لضمان راحتك ورعايتك.</p>
 				</div>
 
-				<div className="contact-grid grid grid-cols-1 lg:grid-cols-2">
-					{/* نموذج الحجز */}
-					<div className="contact-card form-card">
-						<h3 className="card-title flex items-center gap-2">
-							<ClipboardList className="w-5 h-5 text-rose-600" />
+				<div className="booking-card-wrapper">
+					<div className="booking-tabs-nav">
+						<button type="button" onClick={() => setActiveTab("booking")} className={`tab-btn ${activeTab === "booking" ? "active" : ""}`}>
+							<Calendar className="w-4 h-4 ml-2" />
 							حجز موعد جديد
-						</h3>
-						{submitted ? (
-							<div className="success-message">
-								<CheckCircle2 className="w-12 h-12 text-rose-600 mx-auto" />
-								<h4>تم إرسال طلب حجزك بنجاح!</h4>
-								<p>سيقوم طاقم العيادة بالتواصل معك قريباً جداً عبر الهاتف أو الواتساب لتأكيد الموعد النهائي.</p>
-								<button onClick={() => setSubmitted(false)} className="reset-btn" aria-label="حجز موعد آخر">
-									حجز موعد آخر
-								</button>
-							</div>
-						) : (
-							<form onSubmit={handleSubmit} className="booking-form" aria-label="نموذج حجز موعد">
-								<div className="form-group">
-									<label htmlFor="name" className="flex items-center gap-1.5">
-										<User className="w-4 h-4 text-rose-600" />
-										الاسم الكامل
-									</label>
-									<input type="text" id="name" required placeholder="أدخلي اسمك الكريم" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-								</div>
-
-								<div className="form-group">
-									<label htmlFor="phone" className="flex items-center gap-1.5">
-										<Phone className="w-4 h-4 text-rose-600" />
-										رقم الهاتف / الواتساب
-									</label>
-									<input type="tel" id="phone" required placeholder="01xxxxxxxxx" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
-								</div>
-
-								<div className="form-group">
-									<label htmlFor="service" className="flex items-center gap-1.5">
-										<Stethoscope className="w-4 h-4 text-rose-600" />
-										نوع الخدمة أو الاستشارة
-									</label>
-									<select id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}>
-										<option value="متابعة حمل">متابعة حمل وولادة</option>
-										<option value="تأخر حمل">علاج تأخر الحمل والحقن المجهري</option>
-										<option value="سونار متقدم">سونار رباعي الأبعاد ومتقدم</option>
-										<option value="فحص دوري">فحص نسائي دوري</option>
-									</select>
-								</div>
-
-								<div className="form-group">
-									<label htmlFor="date" className="flex items-center gap-1.5">
-										<Calendar className="w-4 h-4 text-rose-600" />
-										الموعد المفضل
-									</label>
-									<input type="date" id="date" required value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })} />
-								</div>
-
-								<button type="submit" className="submit-btn" aria-label="تأكيد طلب الحجز">
-									تأكيد طلب الحجز
-								</button>
-							</form>
-						)}
-					</div>
-
-					{/* معلومات العيادة */}
-					<div className="contact-card info-card">
-						<h3 className="card-title flex items-center gap-2">
-							<MapPin className="w-5 h-5 text-sky-600" />
+						</button>
+						<button type="button" onClick={() => setActiveTab("info")} className={`tab-btn ${activeTab === "info" ? "active" : ""}`}>
+							<MapPin className="w-4 h-4 ml-2" />
 							معلومات العيادة والمواعيد
-						</h3>
-
-						<div className="info-item">
-							<div className="info-icon">
-								<MapPin className="w-5 h-5 text-rose-600" />
-							</div>
-							<div>
-								<h4>عنوان العيادة</h4>
-								<p>العيادة المركزية لطب النساء والتوليد، برج الأطباء، الدور الثالث.</p>
-							</div>
-						</div>
-
-						<div className="info-item">
-							<div className="info-icon">
-								<Clock className="w-5 h-5 text-sky-600" />
-							</div>
-							<div>
-								<h4>ساعات العمل</h4>
-								<p>
-									السبت إلى الخميس: من 2 ظهراً حتى 9 مساءً.
-									<br />
-									الجمعة: إجازة أسبوعية.
-								</p>
-							</div>
-						</div>
-
-						<div className="info-item">
-							<div className="info-icon">
-								<Phone className="w-5 h-5 text-rose-600" />
-							</div>
-							<div>
-								<h4>الاتصال السريع والدعم</h4>
-								<p>هاتف / واتساب: +201117651690</p>
-							</div>
-						</div>
-
-						<div className="quick-whatsapp">
-							<a
-								href="https://wa.me/201117651690"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="whatsapp-btn flex items-center justify-center gap-2"
-								aria-label="تواصل عبر الواتساب"
-							>
-								<MessageSquare className="w-5 h-5" />
-								تواصل فوري عبر الواتساب
-							</a>
-						</div>
+						</button>
 					</div>
+
+					{activeTab === "booking" && (
+						<div className="tab-content animate-fadeIn">
+							{isSubmitted ? (
+								<div className="success-box">
+									<CheckCircle2 className="w-12 h-12 text-emerald-600 mb-2" />
+									<h3>تم استلام طلب حجزك بنجاح!</h3>
+									<p>سنتواصل معك قريباً لتأكيد الموعد النهائي عبر الهاتف أو الواتساب.</p>
+									<button
+										type="button"
+										onClick={() => {
+											setIsSubmitted(false);
+											setFormData({ name: "", phone: "", service: "متابعة حمل", notes: "" });
+										}}
+										className="reset-btn"
+									>
+										حجز موعد آخر
+									</button>
+								</div>
+							) : (
+								<form onSubmit={handleSubmit} className="booking-form">
+									<div className="form-group">
+										<label className="form-label">
+											<User className="w-4 h-4 text-rose-600 ml-1" />
+											الاسم الكامل:
+										</label>
+										<input
+											type="text"
+											required
+											placeholder="أدخلي اسمك الكريم"
+											value={formData.name}
+											onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+											className="form-input"
+										/>
+									</div>
+
+									<div className="form-group">
+										<label className="form-label">
+											<Phone className="w-4 h-4 text-rose-600 ml-1" />
+											رقم الهاتف / الواتساب:
+										</label>
+										<input
+											type="tel"
+											required
+											placeholder="01xxxxxxxxx"
+											value={formData.phone}
+											onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+											className="form-input"
+										/>
+									</div>
+
+									<div className="form-group">
+										<label className="form-label">
+											<Stethoscope className="w-4 h-4 text-rose-600 ml-1" />
+											نوع الخدمة أو الاستشارة:
+										</label>
+										<select value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })} className="form-input">
+											<option value="متابعة حمل">متابعة الحمل والاطمئنان على الجنين</option>
+											<option value="تأخر حمل وحقن مجهري">علاج تأخر الحمل والحقن المجهري</option>
+											<option value="فحص نسائي دوري">فحص نسائي دوري وسونار</option>
+											<option value="استشارة عامة">استشارة طبية عامة</option>
+										</select>
+									</div>
+
+									<div className="form-group">
+										<label className="form-label">
+											<FileText className="w-4 h-4 text-rose-600 ml-1" />
+											ملاحظات إضافية (اختياري):
+										</label>
+										<textarea
+											rows={3}
+											placeholder="اكتبي أي تفاصيل أو أعراض ترغبين في إخبار الدكتورة بها..."
+											value={formData.notes}
+											onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+											className="form-textarea"
+										></textarea>
+									</div>
+
+									<button type="submit" className="submit-btn">
+										<Calendar className="w-4 h-4 ml-2" />
+										تأكيد وإرسال طلب الحجز
+									</button>
+								</form>
+							)}
+						</div>
+					)}
+
+					{activeTab === "info" && (
+						<div className="tab-content animate-fadeIn">
+							<div className="info-grid-single">
+								<div className="info-item">
+									<div className="info-icon-wrapper">
+										<MapPin className="w-5 h-5 text-rose-600" />
+									</div>
+									<div>
+										<h4>عنوان العيادة</h4>
+										<p>برج الأطباء، الدور الثالث، العيادة المركزية لنساء والتوليد.</p>
+									</div>
+								</div>
+
+								<div className="info-item">
+									<div className="info-icon-wrapper">
+										<Clock className="w-5 h-5 text-rose-600" />
+									</div>
+									<div>
+										<h4>ساعات العمل</h4>
+										<p>
+											السبت إلى الخميس: من 2:00 ظهراً حتى 9:00 مساءً.
+											<br />
+											الجمعة: إجازة أسبوعية.
+										</p>
+									</div>
+								</div>
+
+								<div className="info-item">
+									<div className="info-icon-wrapper">
+										<Phone className="w-5 h-5 text-rose-600" />
+									</div>
+									<div>
+										<h4>الاتصال السريع والدعم</h4>
+										<p>هاتف / واتساب: +201117651690</p>
+									</div>
+								</div>
+
+								<div className="clinic-map-action">
+									<a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="map-link-btn">
+										<MapPin className="w-4 h-4 ml-2" />
+										فتح الموقع على خريطة جوجل التفاعلية
+									</a>
+								</div>
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</section>

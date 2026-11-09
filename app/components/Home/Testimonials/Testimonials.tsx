@@ -28,14 +28,12 @@ export default function Testimonials() {
 	return (
 		<section className="testimonials-section" id="testimonials" aria-label="Section Testimonials">
 			<div className="testimonials-container">
-				{/* رأس القسم */}
 				<div className="testimonials-header">
 					<span className="testimonials-badge">قصص نجاح وثقة 💖</span>
 					<h2 className="testimonials-title">كلمات نابعة من القلب من مريضاتنا</h2>
 					<p className="testimonials-subtitle">نفتخر بثقتكم الغالية، ونضع راحة وصحة عائلاتكم دائماً في قمة أولوياتنا بكل حب واهتمام.</p>
 				</div>
 
-				{/* شبكة آراء المريضات (استخدام Tailwind حصرياً للـ Grid) */}
 				<div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{testimonials.map((item, index) => (
 						<div key={index} className={`testimonial-card ${item.accent === "pink" ? "pink-card" : "blue-card"}`}>

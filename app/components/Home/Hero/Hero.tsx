@@ -1,3 +1,5 @@
+// @/app/components/Home/Hero/Hero.tsx
+
 import Link from "next/link";
 import Image from "next/image";
 import "./Hero.css";
@@ -5,7 +7,7 @@ import "./Hero.css";
 export default function Hero() {
 	return (
 		<section className="hero-section-wrapper" id="hero" aria-label="Section Hero">
-			<section className="hero-container">
+			<div className="hero-container">
 				<div className="hero-grid grid grid-cols-1 lg:grid-cols-12">
 					<div className="hero-content lg:col-span-7">
 						<span className="hero-badge">
@@ -23,7 +25,6 @@ export default function Hero() {
 							<br /> نستخدم أحدث التقنيات الطبية المتقدمة لنضمن لكِ ولصغيركِ أفضل رعاية صحية في بيئة هادئة ومطمئنة.
 						</p>
 
-						{/* الأزرار التفاعلية */}
 						<div className="hero-actions">
 							<Link href="booking" className="hero-btn-primary" aria-label="احجزي موعدكِ الآن">
 								احجزي موعدكِ الآن
@@ -35,7 +36,6 @@ export default function Hero() {
 						</div>
 					</div>
 
-					{/* صورة الطبيبة (الجانب الأيسر) */}
 					<div className="hero-image-side lg:col-span-5">
 						<div className="hero-image-box">
 							<Image src="/images/Profile.webp" alt="د. صبرين بدر الديب" fill priority className="doctor-profile-img" sizes="fill" />
@@ -48,7 +48,7 @@ export default function Hero() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</section>
 	);
 }

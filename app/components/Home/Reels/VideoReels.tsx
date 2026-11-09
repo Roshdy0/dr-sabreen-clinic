@@ -1,3 +1,5 @@
+// @/app/components/Home/VideoReels/VideoReels.tsx
+
 import "./VideoReels.css";
 
 export default function VideoReels() {
@@ -63,7 +65,6 @@ export default function VideoReels() {
 					))}
 				</div>
 
-				{/* دعوة لمتابعة التواصل الاجتماعي   */}
 				<div className="reels-cta-banner">
 					<p>تابعينا للمزيد من النصائح اليومية والأسئلة المباشرة</p>
 					<div className="social-buttons">

@@ -5,6 +5,7 @@ import Services from "@/app/components/Home/Services/Services";
 import Testimonials from "@/app/components/Home/Testimonials/Testimonials";
 import VideoReels from "@/app/components/Home/Reels/VideoReels";
 import FAQ from "@/app/components/Home/FAQ/FAQ";
+import ScrollToTop from "@/app/components/ui/Buttons/ScrollToTop/ScrollToTop";
 export default function Home() {
 	return (
 		<div>
@@ -14,6 +15,7 @@ export default function Home() {
 			<Testimonials />
 			<VideoReels />
 			<FAQ />
+			<ScrollToTop />
 		</div>
 	);
 }

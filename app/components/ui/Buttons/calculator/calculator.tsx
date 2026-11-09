@@ -19,10 +19,8 @@ export default function PregnancyCalculator() {
 		const lmp = new Date(lmpDate);
 		const today = new Date();
 
-		// موعد الولادة المتوقع (LMP + 280 يوم)
 		const dueDate = new Date(lmp.getTime() + 280 * 24 * 60 * 60 * 1000);
 
-		// حساب عمر الحمل بالأيام والأسابيع
 		const diffTime = today.getTime() - lmp.getTime();
 		const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 		const currentWeek = Math.floor(diffDays / 7);
@@ -33,7 +31,6 @@ export default function PregnancyCalculator() {
 			return;
 		}
 
-		// تحديد الثلث الحالي (Trimester)
 		let trimester = "الثلث الأول من الحمل";
 		if (currentWeek >= 14 && currentWeek < 28) {
 			trimester = "الثلث الثاني من الحمل (فترة الاستقرار)";
@@ -41,7 +38,6 @@ export default function PregnancyCalculator() {
 			trimester = "الثلث الثالث (التحضير للولادة)";
 		}
 
-		// تشبيه حجم الجنين بناءً على الأسبوع
 		let babySize = "حجم الجنين يتطور بسرعة";
 		if (currentWeek <= 5) babySize = "بحجم حبة خشخاش صغيرة 🌱";
 		else if (currentWeek <= 8) babySize = "بحجم حبة توت بري 🍇";
@@ -54,7 +50,6 @@ export default function PregnancyCalculator() {
 		else if (currentWeek <= 36) babySize = "بحجم بطيخة صغيرة (كانتالوب) 🍈";
 		else babySize = "بحجم بطيخة ناضجة وجاهزة للقاء! 🍉👶";
 
-		// نسبة التقدم
 		const progress = Math.min(Math.max((currentWeek / 40) * 100, 0), 100);
 
 		setResult({
@@ -67,13 +62,11 @@ export default function PregnancyCalculator() {
 		});
 	};
 
-	// دالة حساب التبويض والخصوبة
 	const handleCalculateOvulation = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!lmpDate) return;
 
 		const lmp = new Date(lmpDate);
-		// افتراض دورة 28 يوم، يحدث التبويض غالباً في اليوم 14 من بداية الدورة
 		const ovulationDate = new Date(lmp.getTime() + 14 * 24 * 60 * 60 * 1000);
 		const fertileStart = new Date(ovulationDate.getTime() - 4 * 24 * 60 * 60 * 1000);
 		const fertileEnd = new Date(ovulationDate.getTime() + 1 * 24 * 60 * 60 * 1000);
@@ -88,7 +81,6 @@ export default function PregnancyCalculator() {
 	return (
 		<section className="calculator-wrapper" id="PregnancyCalculator">
 			<div className="calculator-container">
-				{/* ترويسة الحاسبة */}
 				<div className="calculator-header">
 					<span className="calc-badge">
 						<Calculator className="w-3.5 h-3.5 ml-1.5 text-sky-600" />
@@ -98,9 +90,7 @@ export default function PregnancyCalculator() {
 					<p className="calc-desc">أدوات مصممة بعناية لمساعدتك في تتبع تفاصيل رحلة أمومتك ومعرفة مواعيدك الطبية بكل سهولة.</p>
 				</div>
 
-				{/* صندوق التبويض والحمل (Card الرئيسي) */}
 				<div className="calculator-card">
-					{/* أزرار التبديل (Tabs) */}
 					<div className="calc-tabs">
 						<button
 							className={`calc-tab-btn flex items-center justify-center gap-2 ${activeTab === "pregnancy" ? "active-pink" : ""}`}
@@ -126,7 +116,6 @@ export default function PregnancyCalculator() {
 						</button>
 					</div>
 
-					{/* نموذج الإدخال */}
 					<form onSubmit={activeTab === "pregnancy" ? handleCalculatePregnancy : handleCalculateOvulation} className="calc-form">
 						<div className="form-group">
 							<label
@@ -167,7 +156,6 @@ export default function PregnancyCalculator() {
 						</button>
 					</form>
 
-					{/* عرض النتائج الديناميكية */}
 					{result && (
 						<div className="calc-results-box">
 							<h3 className="results-title flex items-center gap-2">
@@ -194,7 +182,6 @@ export default function PregnancyCalculator() {
 										<span className="result-value text-blue">{result.babySize}</span>
 									</div>
 
-									{/* شريط التقدم */}
 									<div className="result-full-width">
 										<div className="progress-info">
 											<span>مؤشر تقدم رحلة الحمل</span>

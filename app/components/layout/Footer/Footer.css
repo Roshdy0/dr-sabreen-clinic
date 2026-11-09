@@ -53,7 +53,6 @@
 				color: var(--foreground);
 				border: 1px solid var(--border-color);
 				text-decoration: none;
-				/* أنيميشن ناعم ومتطور */
 				transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 
@@ -64,7 +63,6 @@
 					transition: transform 0.3s ease;
 				}
 
-				/* أنيميشن الحركة والارتفاع عند مرور الماوس */
 				&:hover {
 					transform: translateY(-4px) scale(1.02);
 					color: #ffffff;
@@ -74,7 +72,6 @@
 					}
 				}
 
-				/* ألوان وأنيميشن الظل لكل منصة على حدة */
 				&.facebook:hover {
 					background-color: #1877F2;
 					border-color: #1877F2;

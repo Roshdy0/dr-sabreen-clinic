@@ -23,9 +23,7 @@ export default function Navbar() {
 	};
 
 	const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-		// 1. لو رابط رئيسي (مثل /#hero) ونحن لسنا في الصفحة الرئيسية أساساً
 		if (href.startsWith("/#") && window.location.pathname !== "/") {
-			// دع المتصفح ينتقل للرئيسية طبيعياً
 			setIsMobileMenuOpen(false);
 			return;
 		}
@@ -100,14 +98,14 @@ export default function Navbar() {
 			{isMobileMenuOpen && (
 				<div className="mobile-dropdown-menu">
 					{navItems.map((item, index) => (
-						<a key={index} href={item.href} onClick={(e) => handleScroll(e, item.href)} className="mobile-nav-link">
+						<a key={index} href={item.href} onClick={(e) => handleScroll(e, item.href)} className="mobile-nav-link" aria-label={item.name}>
 							{item.name}
 						</a>
 					))}
-					<Link href="/calculator" className="mobile-nav-link calc-highlight" onClick={() => setIsMobileMenuOpen(false)}>
+					<Link href="/calculator" className="mobile-nav-link calc-highlight" onClick={() => setIsMobileMenuOpen(false)} aria-label="حاسبة الحمل و التبويض">
 						حاسبة الحمل و التبويض
 					</Link>
-					<Link href="/booking" className="btn-primary text-sm py-3 px-5 text-center mt-2">
+					<Link href="/booking" className="btn-primary text-sm py-3 px-5 text-center mt-2" aria-label="احجزي موعداً الآن">
 						احجزي موعداً الآن
 					</Link>
 				</div>

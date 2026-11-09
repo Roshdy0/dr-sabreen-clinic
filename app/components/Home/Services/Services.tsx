@@ -52,21 +52,19 @@ export default function Services() {
 	return (
 		<section className="services-section" id="services" aria-label="Section Services">
 			<div className="services-container">
-				{/* رأس القسم */}
 				<div className="services-header">
 					<span className="services-badge">خدماتنا الطبية المتخصصة</span>
 					<h2 className="services-title">رعاية متكاملة لصحة المرأة والأمومة</h2>
 					<p className="services-subtitle">نقدم باقة شاملة من الخدمات الطبية المتطورة بمعايير عالمية تجمع بين الدقة العلمية والرعاية الإنسانية الدافئة.</p>
 				</div>
 
-				{/* شبكة الخدمات */}
 				<div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{servicesList.map((service, index) => (
 						<div key={index} className={`service-card ${service.accent === "pink" ? "pink-card" : "blue-card"}`}>
 							<div className="service-icon-box">{service.icon}</div>
 							<h3 className="service-card-title">{service.title}</h3>
 							<p className="service-card-desc">{service.description}</p>
-							<Link href={`/services/${service.slug}`} className="service-link">
+							<Link href={`/services/${service.slug}`} className="service-link" aria-label={`Read more about ${service.title}`}>
 								اعرفي المزيد ←
 							</Link>
 						</div>
