@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { Calendar, MapPin, Phone, Clock, MessageSquare, User, Stethoscope, FileText, CheckCircle2 } from "lucide-react";
-import "./booking.css";
+import "./Booking.css";
 
 export default function BookingPage() {
 	const [activeTab, setActiveTab] = useState<"booking" | "info">("booking");
