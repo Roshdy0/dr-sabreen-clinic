@@ -38,7 +38,7 @@ export default function Hero() {
 
 					<div className="hero-image-side lg:col-span-5">
 						<div className="hero-image-box">
-							<Image src="/images/Profile.webp" alt="د. صبرين بدر الديب" fill priority className="doctor-profile-img" sizes="fill" />
+							<Image src="/images/Profile.webp" alt="د. صبرين بدر الديب" fill priority className="doctor-profile-img" sizes="fill" width={400} height={500} fetchPriority="high" />
 							<div className="image-overlay">
 								<div className="doctor-info-card">
 									<p className="doctor-name">د. صبرين بدر الديب</p>
