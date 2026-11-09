@@ -1,4 +1,7 @@
 .testimonials-section {
+	padding: 5rem 1rem;
+	background-color: var(--background);
+
 	& .testimonials-container {
 		max-width: 1280px;
 		margin: 0 auto;
@@ -17,12 +20,14 @@
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			padding: 0.35rem 1rem;
+			padding: 0.4rem 1.1rem;
 			border-radius: 9999px;
-			font-size: 0.75rem;
-			font-weight: 600;
-			background-color: var(--pregnancy-pink-light);
-			color: var(--pregnancy-pink);
+			font-size: 0.8rem;
+			font-weight: 700;
+			/* استخدام درجة لون وردي غامق جداً تضمن تباين عالي جداً مع الخلفية الفاتحة */
+			background-color: rgba(219, 39, 119, 0.15);
+			color: #9f1239;
+			/* Pink 800 - تباين ممتاز يجتاز اختبار Lighthouse */
 			margin: 0 auto;
 		}
 
@@ -92,18 +97,20 @@
 			}
 
 			& .verified-tag {
-				font-size: 0.7rem;
-				font-weight: 600;
+				font-size: 0.75rem;
+				font-weight: 700;
 				padding: 0.25rem 0.75rem;
 				border-radius: 9999px;
-				background-color: var(--pregnancy-blue-light);
-				color: var(--pregnancy-blue);
+				background-color: rgba(2, 132, 199, 0.15);
+				color: #0369a1;
+				/* Sky 700 لضمان التباين العالي */
 			}
 		}
 
 		&.pink-card .verified-tag {
-			background-color: var(--pregnancy-pink-light);
-			color: var(--pregnancy-pink);
+			background-color: rgba(219, 39, 119, 0.15);
+			color: #9f1239;
+			/* Pink 800 */
 		}
 
 		& .testimonial-comment {

@@ -49,7 +49,7 @@ export default function Testimonials() {
 									<span>{item.name.charAt(0)}</span>
 								</div>
 								<div>
-									<h4 className="patient-name">{item.name}</h4>
+									<div className="patient-name">{item.name}</div>
 									<span className="patient-status">حالة موثقة بالعيادة ✓</span>
 								</div>
 							</div>

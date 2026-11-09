@@ -1,4 +1,11 @@
+/* ==========================================
+   Section Services Styles - Unified & Balanced
+   ========================================== */
+
 .services-section {
+	padding: 5rem 1rem;
+	background-color: var(--background);
+
 	& .services-container {
 		width: 100%;
 		margin: 0 auto;
@@ -57,6 +64,7 @@
 	}
 
 	& .service-card {
+		/* توحيد خلفية الكروت لتكون متناسقة تماماً ومريحة للعين وبدون تشتيت */
 		background-color: var(--card-bg);
 		border: 1px solid var(--border-color);
 		border-radius: 1.75rem;
@@ -71,15 +79,8 @@
 
 		&:hover {
 			transform: translateY(-6px);
-			box-shadow: 0 20px 30px -10px rgba(225, 29, 72, 0.08);
-		}
-
-		&.pink-card:hover {
 			border-color: var(--pregnancy-pink);
-		}
-
-		&.blue-card:hover {
-			border-color: var(--pregnancy-blue);
+			box-shadow: 0 20px 30px -10px rgba(225, 29, 72, 0.08);
 		}
 
 		& .service-icon-box {
@@ -91,14 +92,7 @@
 			justify-content: center;
 			font-size: 1.75rem;
 			margin-bottom: 0.25rem;
-		}
-
-		&.pink-card .service-icon-box {
 			background-color: var(--pregnancy-pink-light);
-		}
-
-		&.blue-card .service-icon-box {
-			background-color: var(--pregnancy-blue-light);
 		}
 
 		& .service-card-title {
@@ -116,21 +110,17 @@
 		& .service-link {
 			margin-top: auto;
 			font-size: 0.875rem;
-			font-weight: 600;
+			font-weight: 700;
 			color: var(--pregnancy-pink);
 			text-decoration: none;
 			display: inline-flex;
 			align-items: center;
 			gap: 0.35rem;
-			transition: gap 0.2s ease;
+			transition: gap 0.2s ease, color 0.2s ease;
 
 			&:hover {
 				gap: 0.6rem;
 			}
-		}
-
-		&.blue-card .service-link {
-			color: var(--pregnancy-blue);
 		}
 	}
 }

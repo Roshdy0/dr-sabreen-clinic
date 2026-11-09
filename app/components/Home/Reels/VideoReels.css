@@ -1,4 +1,7 @@
 .VideoReels {
+	padding: 5rem 1rem;
+	background-color: var(--background);
+
 	& .reels-container {
 		max-width: 1280px;
 		margin: 0 auto;
@@ -17,12 +20,14 @@
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			padding: 0.35rem 1rem;
+			padding: 0.4rem 1.1rem;
 			border-radius: 9999px;
-			font-size: 0.75rem;
-			font-weight: 600;
-			background-color: var(--pregnancy-pink-light);
-			color: var(--pregnancy-pink);
+			font-size: 0.8rem;
+			font-weight: 700;
+			/* استخدام درجة لون وردي/بنفسجي غامق جداً لضمان اجتياز معايير التباين */
+			background-color: rgba(219, 39, 119, 0.15);
+			color: #9f1239;
+			/* Pink 800 عالي التباين */
 			margin: 0 auto;
 		}
 
@@ -101,7 +106,6 @@
 				& .play-icon {
 					font-size: 1.25rem;
 					margin-right: -2px;
-					/* لتوسيط رمز التشغيل البصري */
 				}
 			}
 
@@ -109,10 +113,10 @@
 				position: absolute;
 				bottom: 0.75rem;
 				left: 0.75rem;
-				background-color: rgba(0, 0, 0, 0.6);
+				background-color: rgba(0, 0, 0, 0.75);
 				color: #ffffff;
 				font-size: 0.75rem;
-				font-weight: 600;
+				font-weight: 700;
 				padding: 0.2rem 0.6rem;
 				border-radius: 9999px;
 				backdrop-filter: blur(4px);
@@ -122,9 +126,10 @@
 				position: absolute;
 				top: 0.75rem;
 				right: 0.75rem;
-				background-color: rgba(255, 255, 255, 0.9);
-				color: var(--foreground);
-				font-size: 0.7rem;
+				background-color: rgba(255, 255, 255, 0.95);
+				color: #0f172a;
+				/* نص داكن عالي التباين */
+				font-size: 0.75rem;
 				font-weight: 700;
 				padding: 0.25rem 0.75rem;
 				border-radius: 9999px;

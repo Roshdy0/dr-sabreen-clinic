@@ -103,7 +103,7 @@ export default function TrustBadges() {
 						<div key={index} className={`trust-badge-card ${stat.colorClass}`}>
 							<div className="badge-icon-wrapper">{stat.icon}</div>
 							<div className="badge-content">
-								<h3 className="badge-value">{stat.value}</h3>
+								<div className="badge-value">{stat.value}</div>
 								<p className="badge-label">{stat.label}</p>
 							</div>
 						</div>
