@@ -36,7 +36,7 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="hero-image-side lg:col-span-5 hidden md:block">
+					<div className="hero-image-side lg:col-span-5 hidden lg:block">
 						<div className="hero-image-box">
 							<Image
 								src="/images/Profile.webp"
