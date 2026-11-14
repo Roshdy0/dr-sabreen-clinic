@@ -6,6 +6,7 @@ import Testimonials from "@/app/components/Home/Testimonials/Testimonials";
 import VideoReels from "@/app/components/Home/Reels/VideoReels";
 import FAQ from "@/app/components/Home/FAQ/FAQ";
 import ScrollToTop from "@/app/components/ui/Buttons/ScrollToTop/ScrollToTop";
+import ScrollToDown from "@/app/components/ui/Buttons/ScrollToDown/ScrollToDown";
 export default function Home() {
 	return (
 		<div>
@@ -16,6 +17,7 @@ export default function Home() {
 			<VideoReels />
 			<FAQ />
 			<ScrollToTop />
+			<ScrollToDown />
 		</div>
 	);
 }

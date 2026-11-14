@@ -120,13 +120,57 @@
 	}
 
 	& .hero-image-side {
-		position: relative;
-		justify-content: center;
 		width: 100%;
-		padding-bottom: 2rem;
+		display: flex;
+		position: relative;
+		align-items: center;
+		justify-content: center;
 
-		@media (min-width: 640px) {
-			padding-bottom: 1.5rem;
+		& .mobile-hero-badge-card {
+			background-color: var(--card-bg);
+			border: 1px solid var(--border-color);
+			border-radius: 1.25rem;
+			padding: 1.25rem;
+			box-shadow: var(--shadow-smooth);
+			margin-top: 1rem;
+			text-align: right;
+			flex-direction: column;
+			gap: 1rem;
+
+			& .trust-card-inner {
+				display: flex;
+				align-items: center;
+				gap: 0.875rem;
+
+				& .trust-icon-box {
+					width: 45px;
+					height: 45px;
+					border-radius: 50%;
+					background-color: var(--pregnancy-pink-light);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-shrink: 0;
+				}
+			}
+
+			& .trust-stats-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0.5rem;
+				border-top: 1px solid var(--border-color);
+				padding-top: 0.75rem;
+
+				& .stat-item {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					text-align: center;
+					background-color: rgba(0, 0, 0, 0.02);
+					padding: 0.5rem;
+					border-radius: 0.75rem;
+				}
+			}
 		}
 
 		& .hero-image-box {

@@ -10,6 +10,7 @@ export default function VideoReels() {
 			duration: "1:15 دقيقة",
 			thumbnailGradient: "from-pink-500 to-rose-400",
 			views: "12.4 ألف مشاهدة",
+			// videoUrl: "https://instagram.com/reel/your-reel-id", // رابط الفيديو الحقيقي
 		},
 		{
 			title: "الخرافات الشائعة حول تغذية الحامل.. ما الحقيقة؟",

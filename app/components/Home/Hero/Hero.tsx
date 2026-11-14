@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ShieldCheck, HeartPulse, Award, Users } from "lucide-react";
 import "./Hero.css";
 
 export default function Hero() {
@@ -36,8 +37,34 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="hero-image-side lg:col-span-5 hidden lg:block">
-						<div className="hero-image-box">
+					<div className="hero-image-side lg:col-span-5">
+						<div className="mobile-hero-badge-card block lg:hidden">
+							<div className="trust-card-inner">
+								<div className="trust-icon-box">
+									<HeartPulse className="w-6 h-6 text-pink-600" />
+								</div>
+								<div>
+									<h3 className="font-bold text-sm">رعاية طبية موثوقة</h3>
+									<p className="text-xs opacity-75">أحدث أجهزة السونار ومتابعة دقيقة</p>
+								</div>
+							</div>
+							<div className="trust-stats-grid">
+								<div className="stat-item">
+									<Award className="w-4 h-4 text-pink-500 mb-1" />
+									<span className="font-bold text-xs">خبرة واسعة</span>
+								</div>
+								<div className="stat-item">
+									<Users className="w-4 h-4 text-blue-500 mb-1" />
+									<span className="font-bold text-xs">ثقة مريضاتنا</span>
+								</div>
+								<div className="stat-item">
+									<ShieldCheck className="w-4 h-4 text-emerald-500 mb-1" />
+									<span className="font-bold text-xs">بيئة آمنة</span>
+								</div>
+							</div>
+						</div>
+
+						<div className="hero-image-box hidden lg:block">
 							<Image
 								src="/images/Profile.webp"
 								alt="د. صبرين بدر الديب"
